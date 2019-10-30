@@ -126,38 +126,66 @@ function createComponent(title, date, firstParagraph, secondParagraph, thirdPara
 
     // Element definition
     const article = document.createElement('div');
-    const title = document.createElement('h2');
-    const date = document.createElement('p');
+    const h2 = document.createElement('h2');
+    const dateP = document.createElement('p');
     const paragraph1 = document.createElement('p');
     const paragraph2 = document.createElement('p');
     const paragraph3 = document.createElement('p');
-    const buttonContainer = document.createElement('span');
-    const buttonOpen = document.createElement('button');
+    const button = document.createElement('span');
+
+
 
     // Appending children to their parents
-    article.append(title, date, paragraph1, paragraph2, paragraph3, buttonContainer);
-    buttonContainer.appendChild(buttonOpen);
+    article.append(h2, dateP, button, paragraph1, paragraph2, paragraph3);
+    // button.appendChild(paragraphs);
+
+
 
     // Class names
-    article.classList.add('article');
-    date.classList.add('date');
-    paragraph1.classList.add('firstParagraph');
-    paragraph2.classList.add('secondParagraph');
-    paragraph3.classList.add('thirdParagraph');
-    buttonContainer.classList.add('buttonOpen', 'hideButton');
+    article.classList.add('close', 'article');
+    h2.classList.add('h2');
+    dateP.classList.add('date');
+    button.classList.add('expandButton')
+
+
 
     // Content
-    title.textContent = title;
-    date.textContent = date;
+    h2.textContent = title;
+    dateP.textContent = date;
+    button.textContent = 'expand';
     paragraph1.textContent = firstParagraph;
     paragraph2.textContent = secondParagraph;
     paragraph3.textContent = thirdParagraph;
 
+
     // Events
-    buttonContainer.addEventListener('click', () => {
-        buttonOpen.classList.toggle('hideButton');
-        panelContent.classList.toggle('toggle-on');
+    button.addEventListener("click", () => {
+        article.classList.toggle("article-open")
+        if (button.textContent === "collapse") {
+            button.textContent = "expand"
+        } else {
+            button.textContent = "collapse"
+        }
     })
 
     return article;
 }
+
+const myArticle = {
+    title: 'Programming will drive you to drink!',
+    date: 'Oct 30th, 2019',
+    firstParagraph: `Find something else more interesting check cat door for ambush 10 times before coming in. Trip owner up in kitchen i want food fall asleep on the washing machine yet purr while eating. Scoot butt on the rug. Shake treat bag cat is love, cat is life chase laser so groom yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day - checked.`,
+
+    secondParagraph: `Floof tum, tickle bum, jellybean footies curly toes ptracy, for meow for food, then when human fills food dish, take a few bites of food and continue meowing yet flex claws on the human's belly and purr like a lawnmower howl on top of tall thing. Eat and than sleep on your face destroy house in 5 seconds. Kitty time curl up and sleep on the freshly laundered towels or hunt anything that moves, yet see brother cat receive pets, attack out of jealousy, and rub my belly hiss yet the door is opening!`,
+
+    thirdParagraph: `This human feeds me, i should be a god leave dead animals as gifts. Eat from dog's food stare at imaginary bug get suspicious of own shadow then go play with toilette paper kitty loves pigs. Poop in litter box, scratch the walls. Murder hooman toes fart in owners food jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed. Cat is love, cat is life stuff and things but 𝕄𝔼𝕆𝕎 and relentlessly pursues moth sit by the fire crash against wall but walk away like nothing happened.`
+}
+
+data.push(myArticle);
+const body = document.querySelector('body');
+const newArticle = data.map(data => {
+    return body.appendChild(createComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+console.log(newArticle);
+console.log(data);
